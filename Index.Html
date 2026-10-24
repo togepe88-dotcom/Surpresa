@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Você 🌹</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    
+<div class="vinil-player" onclick="toggleMusica()">
+    <img src="vinil.png" id="vinil" alt="Vinil">
+</div>
+
+<audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+
+    <div class="container">
+
+        <h1>🌹 Para Você 🌹</h1>
+
+        <p class="intro">
+            Existem pessoas que passam pela nossa vida.
+            Existem pessoas que chamam atenção.
+            E existem aquelas raras pessoas que, sem perceber,
+            acabam ocupando um espaço especial nos nossos pensamentos.
+        </p>
+
+        <div class="card">
+            ✨ Seu jeito é diferente.
+        </div>
+
+        <div class="card">
+            ❤️ Suas mensagens sempre melhoram meu dia.
+        </div>
+
+        <div class="card">
+            🌸 Você tem algo que faz qualquer conversa parecer melhor.
+        </div>
+
+        <div class="card">
+            🌹 E quanto mais eu conheço você, mais incrível você parece.
+        </div>
+
+        <button id="btn" onclick="mostrarSurpresa()">
+            Clique aqui ❤️
+        </button>
+
+        <div id="mensagem"></div>
+
+    </div>
+
+    <script>
+
+        let floresAtivas = false;
+
+        function mostrarSurpresa() {
+
+            document.getElementById("btn").style.display = "none";
+
+            
+const vinilPlayer = document.querySelector(".vinil-player");
+const musica = document.getElementById("musica");
+const vinil = document.getElementById("vinil");
+
+vinilPlayer.style.display = "block";
+
+setTimeout(() => {
+    vinilPlayer.style.opacity = "1";
+    vinilPlayer.style.transform = "translateY(0)";
+}, 50);
+
+musica.play();
+vinil.classList.add("girando");
+
+
+
+            const texto = `Eu poderia falar sobre o seu sorriso,
+
+ou sobre o seu jeito,
+
+ou sobre como gosto de conversar com você.
+
+Mas a verdade é que o que mais me marcou não foi nenhuma dessas coisas.
+
+Foi perceber que,
+
+mesmo depois de um dia inteiro,
+
+mesmo sem mensagens,
+
+mesmo quando tudo está corrido...
+
+você continua sendo a primeira pessoa que eu procuro nos meus pensamentos.
+
+E isso, pra mim,
+
+diz mais do que qualquer frase bonita poderia dizer.
+
+Porque eu nunca fui de conversar com muitas pessoas.
+
+Nunca fui de criar expectativas.
+
+Mas, de alguma forma,
+
+você conseguiu ser diferente.
+
+Entre tantas coincidências,
+
+tantas conversas que poderiam não acontecer,
+
+foi a sua que ficou.
+
+E mesmo quando o dia termina sem um "oi",
+
+mesmo quando a rotina atrapalha,
+
+mesmo quando tudo parece um pouco distante...
+
+é você.
+
+Ainda é você.
+
+E sabe de uma coisa?
+
+Eu nunca fui muito bom com palavras.
+
+Nunca soube transformar exatamente em frases tudo aquilo que eu sinto.
+
+Talvez por isso eu tenha decidido fazer isso do meu jeito.
+
+Porque programar esse site foi mais fácil do que tentar explicar tudo em uma conversa.
+
+Por isso fiz esse site.
+
+Não porque ele é perfeito.
+
+Não porque eu encontrei as palavras perfeitas.
+
+Mas porque queria te entregar, da minha forma,
+
+o melhor de mim.
+
+E talvez seja justamente isso que torna tudo especial.
+
+Porque você foi a primeira pessoa que me fez ter vontade de fazer algo assim.
+
+A primeira pessoa que me fez parar,
+
+abrir o VS Code,
+
+e passar horas construindo alguma coisa só para tentar arrancar um sorriso seu.
+
+E, sinceramente...
+
+eu faria tudo de novo.
+
+❤️🌹`;
+
+         let i = 0;
+
+    const elemento = document.getElementById("mensagem");
+
+    function escrever() {
+
+        if (i < texto.length) {
+
+            elemento.innerHTML += texto.charAt(i);
+
+            i++;
+
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: "smooth"
+            });
+
+           setTimeout(escrever, 90);
+        }
+
+    }
+
+    escrever();
+
+    if (!floresAtivas) {
+
+        floresAtivas = true;
+
+        setInterval(criarFlor, 150);
+
+    }
+}  
+
+        function criarFlor() {
+
+            const flor = document.createElement("div");
+
+            flor.classList.add("flor");
+
+            const itens = [
+                "🌹",
+                "🌸",
+                "🌺",
+                "❤️"
+            ];
+
+            flor.innerHTML =
+                itens[Math.floor(Math.random() * itens.length)];
+
+            flor.style.left =
+                Math.random() * window.innerWidth + "px";
+
+            flor.style.animationDuration =
+                (4 + Math.random() * 4) + "s";
+
+            document.body.appendChild(flor);
+
+            setTimeout(() => {
+                flor.remove();
+            }, 8000);
+
+        }
+
+        
+function toggleMusica() {
+
+    const musica = document.getElementById("musica");
+    const vinil = document.getElementById("vinil");
+
+    if (musica.paused) {
+        musica.play();
+        vinil.classList.add("girando");
+    } else {
+        musica.pause();
+        vinil.classList.remove("girando");
+    }
+}
+
+
+    </script>
+
+</body>
+</html>
